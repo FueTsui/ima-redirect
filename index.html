@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>正在跳转</title>
+  <style>
+    body {
+      margin: 0;
+      display: grid;
+      place-items: center;
+      min-height: 100vh;
+      font-family: system-ui, sans-serif;
+      background: #f6f7f9;
+      color: #333;
+    }
+
+    .card {
+      padding: 28px 32px;
+      border-radius: 16px;
+      background: white;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h3>正在为你分配专属链接</h3>
+    <p>页面即将自动跳转……</p>
+  </div>
+
+  <script>
+    const links = [
+      "https://ima.qq.com/copilot-token-incentive/token-ticket-claim/f6853b67-9446-4bbf-841d-097dc906cfde",
+      "https://ima.qq.com/copilot-token-incentive/token-ticket-claim/57dfeb75-7c32-4049-8ea2-59811a88d67e",
+      "https://ima.qq.com/copilot-token-incentive/token-ticket-poster/65d45827-ab0b-45b9-915b-572b8b02844e"
+    ];
+
+    const storageKey = "ima_assigned_link";
+    let index = localStorage.getItem(storageKey);
+
+    if (index === null) {
+      index = Math.floor(Math.random() * links.length);
+      localStorage.setItem(storageKey, String(index));
+    }
+
+    setTimeout(() => {
+      window.location.replace(links[Number(index)]);
+    }, 800);
+  </script>
+</body>
+</html>
